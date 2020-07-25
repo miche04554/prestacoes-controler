@@ -1,0 +1,1 @@
+sqlcmd -S .\SQLEXPRESS -i "C:\Program Files (x86)\aluguel_banco\backup.sql"

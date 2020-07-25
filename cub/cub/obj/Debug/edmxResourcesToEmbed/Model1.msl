@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="aluguel_bancoModelStoreContainer" CdmEntityContainer="aluguel_bancoEntities3">
+    <EntitySetMapping Name="apartamentos_tabela">
+      <EntityTypeMapping TypeName="aluguel_bancoModel.apartamentos_tabela">
+        <MappingFragment StoreEntitySet="apartamentos_tabela">
+          <ScalarProperty Name="valor_em_reais" ColumnName="valor_em_reais" />
+          <ScalarProperty Name="saldo_devedor_cub" ColumnName="saldo_devedor_cub" />
+          <ScalarProperty Name="valor_pago_cub" ColumnName="valor_pago_cub" />
+          <ScalarProperty Name="valor_pago_reais" ColumnName="valor_pago_reais" />
+          <ScalarProperty Name="valor_reforco_cub" ColumnName="valor_reforco_cub" />
+          <ScalarProperty Name="valor_parcela_cub" ColumnName="valor_parcela_cub" />
+          <ScalarProperty Name="valor_em_cub" ColumnName="valor_em_cub" />
+          <ScalarProperty Name="cub_quando_comprado" ColumnName="cub_quando_comprado" />
+          <ScalarProperty Name="data_compra" ColumnName="data_compra" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cub_tabela">
+      <EntityTypeMapping TypeName="aluguel_bancoModel.cub_tabela">
+        <MappingFragment StoreEntitySet="cub_tabela">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="valor_atual_do_cub" ColumnName="valor_atual_do_cub" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pagamentos_tabela">
+      <EntityTypeMapping TypeName="aluguel_bancoModel.pagamentos_tabela">
+        <MappingFragment StoreEntitySet="pagamentos_tabela">
+          <ScalarProperty Name="valor_cub" ColumnName="valor_cub" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="id_apartamento" ColumnName="id_apartamento" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

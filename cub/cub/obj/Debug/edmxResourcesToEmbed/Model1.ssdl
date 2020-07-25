@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="aluguel_bancoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="apartamentos_tabela">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="data_compra" Type="date" />
+    <Property Name="cub_quando_comprado" Type="decimal" Precision="36" Scale="2" Nullable="false" />
+    <Property Name="valor_em_cub" Type="decimal" Precision="36" Scale="18" Nullable="false" />
+    <Property Name="valor_parcela_cub" Type="decimal" Precision="36" Scale="18" Nullable="false" />
+    <Property Name="valor_reforco_cub" Type="decimal" Precision="36" Scale="18" />
+    <Property Name="valor_pago_reais" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="valor_pago_cub" Type="decimal" Precision="36" Scale="18" Nullable="false" />
+    <Property Name="saldo_devedor_cub" Type="decimal" Precision="36" Scale="18" Nullable="false" />
+    <Property Name="valor_em_reais" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cub_tabela">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="valor_atual_do_cub" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pagamentos_tabela">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_apartamento" Type="int" Nullable="false" />
+    <Property Name="tipo" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="valor" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="data" Type="date" Nullable="false" />
+    <Property Name="valor_cub" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_pagamentos_apartamentos">
+    <End Role="apartamentos_tabela" Type="Self.apartamentos_tabela" Multiplicity="1" />
+    <End Role="pagamentos_tabela" Type="Self.pagamentos_tabela" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="apartamentos_tabela">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pagamentos_tabela">
+        <PropertyRef Name="id_apartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="aluguel_bancoModelStoreContainer">
+    <EntitySet Name="apartamentos_tabela" EntityType="Self.apartamentos_tabela" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cub_tabela" EntityType="Self.cub_tabela" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pagamentos_tabela" EntityType="Self.pagamentos_tabela" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_pagamentos_apartamentos" Association="Self.FK_pagamentos_apartamentos">
+      <End Role="apartamentos_tabela" EntitySet="apartamentos_tabela" />
+      <End Role="pagamentos_tabela" EntitySet="pagamentos_tabela" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
